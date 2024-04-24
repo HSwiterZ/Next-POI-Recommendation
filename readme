@@ -20,6 +20,7 @@ Impv(%)       6.13%       8.90%       4.06%       4.34%       7.64%
 Table 2 Comparison of recommendation performance between GETNext and FPGT on the NYC-F-Remove-Duplicate dataset.
 
 In the original NYC-F, duplicate data is viewed as consecutive check-ins of the same trajectory, which is inconsistent with the user's real-world behavior and introduces a disturbance term to the model. Therefore. After removing the duplicate data, the recommendation accuracy of both FPGT and GETNext is improved to different degrees.
+
 We upload NYC-F-Remove-Duplicate as a new dataset under the path of FPGT/datasets and keep the original NYC-F dataset.
 
 If you find the same issue in TKY, you can apply the following Python function to redo the dataset.
