@@ -1,2 +1,14 @@
-This is the source code of paper "Feature-based POI Grouping with Transformer for Next Point of Interest Recommendation", https://doi.org/10.1016/j.asoc.2023.110754.
+This is the source code of the paper "Feature-based POI Grouping with Transformer for Next Point of Interest Recommendation", https://doi.org/10.1016/j.asoc.2023.110754.
 If you need more information, you can send me an email at heyuhang_hyh@163.com.
+
+============================== Reply to issue#1 ==============================
+Thanks to @zelo2 for the problem description.
+
+We remove the duplicates existing in the NYC-F dataset and label the new dataset as "NYC-F-Remove-Duplicate", the specific composition of the dataset is shown in Table (1). 
+
+Based on NYC-F-Remove-Duplicate, we re-compare the recommendation performance of FPGT and GETNext, and the results are shown in Table (2). Table (2) shows that FPGT gains a better model performance compared to GETNext, which is in line with the conclusions in the paper.
+
+In the original NYC-F, duplicate data is viewed as consecutive check-ins of the same trajectory, which is inconsistent with the user's real-world behavior and introduces a disturbance term to the model. Therefore. After removing the duplicate data, the recommendation accuracy of both FPGT and GETNext is improved to different degrees.
+We upload NYC-F-Remove-Duplicate as a new dataset under the path of FPGT/datasets and keep the original NYC-F dataset.
+
+Hope the information can be helpful and informative for subsequent researchers.
