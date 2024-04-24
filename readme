@@ -1,12 +1,23 @@
 This is the source code of the paper "Feature-based POI Grouping with Transformer for Next Point of Interest Recommendation", https://doi.org/10.1016/j.asoc.2023.110754.
 If you need more information, you can send me an email at heyuhang_hyh@163.com.
 
-============================== Reply to issue#1 ==============================
+============================================== Reply to issue#1 start ==============================================
 Thanks to @zelo2 for the problem description.
 
-We remove the duplicates existing in the NYC-F dataset and label the new dataset as "NYC-F-Remove-Duplicate", the specific composition of the dataset is shown in Table (1). 
+We remove the duplicates existing in the NYC-F dataset and label the new dataset as "NYC-F-Remove-Duplicate", the specific composition of the dataset is shown in Table 1. 
 
-Based on NYC-F-Remove-Duplicate, we re-compare the recommendation performance of FPGT and GETNext, and the results are shown in Table (2). Table (2) shows that FPGT gains a better model performance compared to GETNext, which is in line with the conclusions in the paper.
+Dataset                       User        POI         Category    Check-ins   Trajectory    
+NYC-F                         1,080       5,135       321         123,398     23,317 
+NYC-F-Remove-Duplicate        1,080       5,135       321         123,235     23,317
+            Table 1 Summary of NYC-F and NYC-F-Remove-duplicate datasets.
+
+Based on NYC-F-Remove-Duplicate, we re-compare the recommendation performance of FPGT and GETNext, and the results are shown in Table 2. Table 2 shows that FPGT gains a better model performance compared to GETNext, which is in line with the conclusions in the paper.
+
+Model         Acc@1       Acc@5       Acc@10      Acc@20      MRR    
+GETNext       0.2269      0.4930      0.6002      0.6726      0.3481 
+FPGT          0.2408      0.5369      0.6246      0.7018      0.3747 
+Impv(%)       6.13%       8.90%       4.06%       4.34%       7.64% 
+Table 2 Comparison of recommendation performance between GETNext and FPGT on the NYC-F-Remove-Duplicate dataset.
 
 In the original NYC-F, duplicate data is viewed as consecutive check-ins of the same trajectory, which is inconsistent with the user's real-world behavior and introduces a disturbance term to the model. Therefore. After removing the duplicate data, the recommendation accuracy of both FPGT and GETNext is improved to different degrees.
 We upload NYC-F-Remove-Duplicate as a new dataset under the path of FPGT/datasets and keep the original NYC-F dataset.
@@ -19,3 +30,4 @@ def remove_duplicate(data_path, redo_data_path):
     deduplicated_data.to_csv(redo_data_path, index=False)
 
 Hope the information can be helpful and informative for subsequent researchers.
+============================================== Reply to issue#1 end ==============================================
