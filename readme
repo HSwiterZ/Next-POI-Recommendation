@@ -21,6 +21,8 @@ Table 2 Comparison of recommendation performance between GETNext and FPGT on the
 
 In the original NYC-F, duplicate data is viewed as consecutive check-ins of the same trajectory, which is inconsistent with the user's real-world behavior and introduces a disturbance term to the model. Therefore. After removing the duplicate data, the recommendation accuracy of both FPGT and GETNext is improved to different degrees.
 
+Why does the model's performance improve just by removing the duplicate 100+ data? This is due to the fact that the user's actual trajectory is A->B, while some of the trajectories in NYC-F introduce interference terms due to the duplicate data making the user trajectory A->A->B.
+
 We upload NYC-F-Remove-Duplicate as a new dataset under the path of FPGT/datasets and keep the original NYC-F dataset.
 
 If you find the same issue in TKY, you can apply the following Python function to redo the dataset.
