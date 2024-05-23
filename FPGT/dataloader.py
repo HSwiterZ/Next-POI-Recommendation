@@ -80,11 +80,10 @@ def save_poi_features(args):
     result = data['POI_id'].value_counts()
 
     with open(os.path.join(args.map_path, 'poi_features2idx.csv'), 'w') as f:
-        print(f'poi_idx,cat_idx,region_idx,hotness_idx', file=f)
+        print(f'poi_idx,region_idx,hotness_idx', file=f)
         for i, row in tqdm(data_copy.iterrows()):
 
             poi_idx = poi_id2idx_dict[row["POI_id"]]
-            cat_idx = cat_id2idx_dict[row["POI_catid"]]
 
             new_longitude = int(row["longitude"] * args.reg_split) / args.reg_split
             new_latitude = int(row["latitude"] * args.reg_split) / args.reg_split
@@ -93,7 +92,7 @@ def save_poi_features(args):
 
             hotness = math.ceil(result.get(row["POI_id"], 0) / args.hot_split)
             hotness_idx = hotness2idx_dict[hotness]
-            print(f'{poi_idx},{cat_idx},{region_idx},{hotness_idx}', file=f)
+            print(f'{poi_idx},{region_idx},{hotness_idx}', file=f)
 
 
 def get_map_dict(path):
