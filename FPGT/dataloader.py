@@ -33,7 +33,7 @@ def save_map_dict(args, dict_name_seq=None):
         hotness_list = []
         result = data['POI_id'].value_counts()
         for poi in tqdm(poi_id_list):
-            hotness = math.ceil(result.get(poi, 0) / args.cnt_split)
+            hotness = math.ceil(result.get(poi, 0) / args.hot_split)
             hotness_list.append(hotness)
         hotness_list = sorted(list(set(hotness_list)))
         hotness2idx_dict = dict(zip(hotness_list, range(len(hotness_list))))
@@ -46,8 +46,8 @@ def save_map_dict(args, dict_name_seq=None):
     if "reg" in dict_name_seq:
         region_list = []
         for longitude, latitude in tqdm(zip(list(data['longitude']), list(data['latitude']))):
-            new_longitude = int(longitude * args.loc_split) / args.loc_split
-            new_latitude = int(latitude * args.loc_split) / args.loc_split
+            new_longitude = int(longitude * args.reg_split) / args.reg_split
+            new_latitude = int(latitude * args.reg_split) / args.reg_split
             key = f'{new_longitude}_{new_latitude}'
             if key not in region_list:
                 region_list.append(key)
