@@ -86,12 +86,12 @@ def save_poi_features(args):
             poi_idx = poi_id2idx_dict[row["POI_id"]]
             cat_idx = cat_id2idx_dict[row["POI_catid"]]
 
-            new_longitude = int(row["longitude"] * args.loc_split) / args.loc_split
-            new_latitude = int(row["latitude"] * args.loc_split) / args.loc_split
+            new_longitude = int(row["longitude"] * args.reg_split) / args.reg_split
+            new_latitude = int(row["latitude"] * args.reg_split) / args.reg_split
             key = f'{new_longitude}_{new_latitude}'
             region_idx = region2idx_dict[key]
 
-            hotness = math.ceil(result.get(row["POI_id"], 0) / args.cnt_split)
+            hotness = math.ceil(result.get(row["POI_id"], 0) / args.hot_split)
             hotness_idx = hotness2idx_dict[hotness]
             print(f'{poi_idx},{cat_idx},{region_idx},{hotness_idx}', file=f)
 
